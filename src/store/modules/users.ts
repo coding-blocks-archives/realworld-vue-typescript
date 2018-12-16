@@ -1,4 +1,4 @@
-import { getModule, Module, Mutation, MutationAction, VuexModule } from 'vuex-module-decorators';
+import { getModule, Module, MutationAction, VuexModule } from 'vuex-module-decorators';
 import store from '@/store';
 import { Profile, User, UserSubmit } from '../models';
 import { fetchProfile, loginUser } from '../api';
@@ -10,18 +10,9 @@ import { fetchProfile, loginUser } from '../api';
   dynamic: true,
 })
 class UsersModule extends VuexModule {
-  user: User | null = null
-  profile: Profile | null = null
+  user: User | null = null;
+  profile: Profile | null = null;
 
-  @Mutation
-  setUser(user: User) {
-    this.user = user;
-  }
-
-  @Mutation
-  setProfile(profile: Profile) {
-    this.profile = profile;
-  }
 
   get username() {
     return (this.user && this.user.username) || null;

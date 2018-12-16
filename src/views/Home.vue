@@ -53,7 +53,6 @@
 import { Vue, Component } from 'vue-property-decorator';
 import ArticlePreview from '@/components/article/ArticlePreview.vue';
 import articles from '@/store/modules/articles';
-import { Article } from '@/store/models';
 
 @Component({
   components: {
@@ -61,12 +60,10 @@ import { Article } from '@/store/models';
   },
 })
 export default class extends Vue {
-  feed: Article[] = [];
+  get feed() { return articles.feed }
 
-  created() {
-    articles.refreshFeed('global').then(() => {
-      this.feed = articles.feed;
-    });
+  async created() {
+    await articles.refreshFeed('global')
   }
 }
 </script>

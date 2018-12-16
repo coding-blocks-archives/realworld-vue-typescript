@@ -3,7 +3,7 @@ import {
   VuexModule,
   getModule,
   Mutation,
-  Action,
+  Action, MutationAction,
 } from 'vuex-module-decorators';
 import store from '@/store';
 import { Article } from '../models';
@@ -19,15 +19,12 @@ type FeedType = 'global' | 'user'
 class ArticlesModule extends VuexModule {
   feed: Article[] = [];
 
-  @Mutation
-  setFeed(articles: Article[]) {
-    this.feed = articles;
-  }
-
-  @Action({ commit: 'setFeed' })
+  @MutationAction
   async refreshFeed(feedType: FeedType) {
     const globalFeed = await api.getGlobalFeed();
-    return globalFeed.articles;
+    return {
+      feed: globalFeed.articles
+    };
   }
 }
 
