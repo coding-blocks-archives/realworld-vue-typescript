@@ -1,4 +1,3 @@
-
 export interface Profile {
   username: string;
   bio?: string;
@@ -33,18 +32,20 @@ export interface Author {
   following: boolean;
 }
 
-
 export interface UserSubmit {
   email: string;
   password: string;
 }
 
 export interface UserResponse {
-  user: User
+  user: User;
+}
+
+export interface ProfileResponse {
+  profile: Profile;
 }
 
 export interface ArticlesResponse {
   articles?: (Article)[] | null;
   articlesCount: number;
 }
-

@@ -5,14 +5,12 @@
         <div class="col-md-6 offset-md-3 col-xs-12">
           <h1 class="text-xs-center">Sign in</h1>
           <p class="text-xs-center">
-            <router-link to="/register">
-              Need an account?
-            </router-link>
-            </p>
+            <router-link to="/register"> Need an account? </router-link>
+          </p>
 
-          <!-- <ul class="error-messages">
-            <li>That email is already taken</li>
-          </ul> -->
+          <ul class="error-messages" v-if="loginError">
+            <li>{{ loginError }}</li>
+          </ul>
 
           <form>
             <fieldset class="form-group">
@@ -31,7 +29,10 @@
                 placeholder="Password"
               />
             </fieldset>
-            <button @click="login()" class="btn btn-lg btn-primary pull-xs-right">
+            <button
+              @click="login()"
+              class="btn btn-lg btn-primary pull-xs-right"
+            >
               Sign in
             </button>
           </form>
@@ -43,18 +44,25 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import users from '@/store/modules/users'
+import users from '@/store/modules/users';
 
 @Component
 export default class Login extends Vue {
-  email = ''
-  password = ''
+  email = '';
+  password = '';
+  loginError = '';
 
   login() {
-    users.login({
-      email: this.email,
-      password: this.password
-    })
+    users
+      .login({
+        email: this.email,
+        password: this.password,
+      })
+      .then(() => this.$router.push('/'))
+      .catch((err) => {
+        console.error(err);
+        this.loginError = 'Invalid username or password';
+      });
   }
 }
 </script>

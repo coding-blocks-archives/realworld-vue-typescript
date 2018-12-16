@@ -1,29 +1,42 @@
-import { VuexModule, Module, getModule, MutationAction, Mutation, Action } from 'vuex-module-decorators'
-import store from '@/store'
-import { User, Profile, UserSubmit } from '../models';
-import { loginUser } from '../api';
+import { getModule, Module, Mutation, MutationAction, VuexModule } from 'vuex-module-decorators';
+import store from '@/store';
+import { Profile, User, UserSubmit } from '../models';
+import { fetchProfile, loginUser } from '../api';
 
 @Module({
   namespaced: true,
   name: 'users',
   store,
-  dynamic: true
+  dynamic: true,
 })
 class UsersModule extends VuexModule {
   user: User | null = null
   profile: Profile | null = null
 
   @Mutation
-  setUser(user: User) { this.user = user }
-
-  get username() {
-    return this.user && this.user.username || null
+  setUser(user: User) {
+    this.user = user;
   }
 
-  @Action({commit: 'setUser'})
+  @Mutation
+  setProfile(profile: Profile) {
+    this.profile = profile;
+  }
+
+  get username() {
+    return (this.user && this.user.username) || null;
+  }
+
+  @MutationAction
   async login(userSubmit: UserSubmit) {
-    const user = await loginUser(userSubmit)
-    return user
+    const user = await loginUser(userSubmit);
+    return { user };
+  }
+
+  @MutationAction
+  async loadProfile(username: string) {
+    const profile = await fetchProfile(username);
+    return { profile };
   }
 }
 

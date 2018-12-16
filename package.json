@@ -11,30 +11,30 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "vue": "^2.5.17",
-    "vue-class-component": "^6.0.0",
+    "vue": "^2.5.18",
+    "vue-class-component": "^6.1.0",
     "vue-property-decorator": "^7.2.0",
-    "vue-router": "^3.0.1",
+    "vue-router": "^3.0.2",
     "vuex": "^3.0.1",
-    "vuex-module-decorators": "^0.9.2"
+    "vuex-module-decorators": "^0.9.7"
   },
   "devDependencies": {
-    "@types/jest": "^23.1.4",
+    "@types/jest": "^23.3.10",
     "@vue/cli-plugin-babel": "^3.2.0",
     "@vue/cli-plugin-e2e-cypress": "^3.2.0",
-    "@vue/cli-plugin-eslint": "^3.2.0",
+    "@vue/cli-plugin-eslint": "^3.2.1",
     "@vue/cli-plugin-typescript": "^3.2.0",
     "@vue/cli-plugin-unit-jest": "^3.2.0",
     "@vue/cli-service": "^3.2.0",
-    "@vue/eslint-config-prettier": "^4.0.0",
+    "@vue/eslint-config-prettier": "^4.0.1",
     "@vue/eslint-config-typescript": "^3.2.0",
-    "@vue/test-utils": "^1.0.0-beta.20",
+    "@vue/test-utils": "^1.0.0-beta.27",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0-0",
-    "ts-jest": "^23.0.0",
-    "typescript": "^3.0.0",
-    "vue-template-compiler": "^2.5.17"
+    "eslint": "^5.10.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.2",
+    "vue-template-compiler": "^2.5.21"
   }
 }

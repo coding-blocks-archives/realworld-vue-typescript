@@ -17,15 +17,16 @@
             <i class="ion-gear-a"></i>&nbsp;Settings
           </a>
         </li>
-        <li v-if="!username" class="nav-item">
-          <router-link class="nav-link" to="/register">
-            Sign up
+        <li v-if="username" class="nav-item">
+          <router-link class="nav-link" :to="'/@' + username">
+            {{ username }}
           </router-link>
         </li>
         <li v-if="!username" class="nav-item">
-          <router-link class="nav-link" to="/login">
-            Sign in
-          </router-link>
+          <router-link class="nav-link" to="/register"> Sign up </router-link>
+        </li>
+        <li v-if="!username" class="nav-item">
+          <router-link class="nav-link" to="/login"> Sign in </router-link>
         </li>
       </ul>
     </div>
@@ -34,12 +35,12 @@
 
 <script>
 import { Vue, Component } from 'vue-property-decorator';
-import users from '@/store/modules/users'
+import users from '@/store/modules/users';
 
 @Component
 export default class AppNavbar extends Vue {
   get username() {
-    return users.username
+    return users.username;
   }
 }
 </script>
