@@ -59,11 +59,13 @@ import articles from '@/store/modules/articles';
     ArticlePreview,
   },
 })
-export default class extends Vue {
-  get feed() { return articles.feed }
+export default class Home extends Vue {
+  get feed() {
+    return articles.feed;
+  }
 
   async created() {
-    await articles.refreshFeed('global')
+    await articles.refreshFeed('global');
   }
 }
 </script>

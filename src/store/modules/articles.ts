@@ -3,12 +3,13 @@ import {
   VuexModule,
   getModule,
   Mutation,
-  Action, MutationAction,
+  Action,
+  MutationAction,
 } from 'vuex-module-decorators';
 import store from '@/store';
 import { Article } from '../models';
 import * as api from '@/store/api';
-type FeedType = 'global' | 'user'
+type FeedType = 'global' | 'user';
 
 @Module({
   dynamic: true,
@@ -23,7 +24,7 @@ class ArticlesModule extends VuexModule {
   async refreshFeed(feedType: FeedType) {
     const globalFeed = await api.getGlobalFeed();
     return {
-      feed: globalFeed.articles
+      feed: globalFeed.articles,
     };
   }
 }
